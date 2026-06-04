@@ -37,6 +37,12 @@ a{text-decoration:none;color:inherit}
 .nav a{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);transition:color .3s;padding:4px 0;position:relative}
 .nav a::after{content:'';position:absolute;bottom:0;inset-inline-start:0;width:0;height:1.5px;background:var(--red);transition:width .3s}
 .nav a:hover{color:var(--ink)}.nav a:hover::after{width:100%}
+.nav-drop{position:relative}
+.nav-drop>.dropdown{display:none;position:absolute;top:100%;inset-inline-start:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--border);border-radius:12px;padding:6px;min-width:160px;box-shadow:0 8px 30px rgba(14,14,14,.1);z-index:100;flex-direction:column;gap:2px}
+.nav-drop>.dropdown a{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:8px 14px;border-radius:8px;transition:all .25s;white-space:nowrap}
+.nav-drop>.dropdown a::after{display:none}
+.nav-drop>.dropdown a:hover{background:var(--red);color:#fff}
+.nav-drop:hover>.dropdown,.nav-drop.show>.dropdown{display:flex}
 .lang-switcher{display:flex;gap:4px}
 .lang-btn{background:transparent;border:1.5px solid var(--border);color:var(--muted);padding:3px 8px;border-radius:20px;cursor:pointer;font-family:inherit;font-size:.62rem;font-weight:700;letter-spacing:.04em;transition:all .3s;min-height:28px;line-height:1}
 .lang-btn.active{background:var(--red);color:#fff;border-color:var(--red)}
@@ -261,7 +267,15 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
     <nav class="nav">
       <a href="#home"    data-i18n="navHome">الرئيسية</a>
       <a href="#about"   data-i18n="navAbout">عني</a>
-      <a href="#work"    data-i18n="navWork">الأعمال</a>
+      <div class="nav-drop">
+        <a href="#work" data-i18n="navWork">الأعمال</a>
+        <div class="dropdown">
+          <a href="#designs" data-i18n="navDesigns">التصاميم</a>
+          <a href="#photos" data-i18n="navPhotos">الصور</a>
+          <a href="#videos" data-i18n="navVideos">الفيديوهات</a>
+          <a href="portfolio.pdf" target="_blank" data-i18n="navBook">كتيب الأعمال</a>
+        </div>
+      </div>
       <a href="#contact" data-i18n="navContact">التواصل</a>
     </nav>
   </div>
@@ -394,7 +408,7 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
 <section id="work" class="sec" style="padding-top:0">
 
   <!-- 01 DESIGNS -->
-  <div class="sec-hdr reveal">
+  <div id="designs" class="sec-hdr reveal">
     <span class="sec-num">01</span>
     <h2 class="sec-title" data-i18n="designTitle">التصاميم</h2>
   </div>
@@ -419,7 +433,7 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
   </div>
 
   <!-- 02 PHOTOS -->
-  <div style="margin-top:90px">
+  <div id="photos" style="margin-top:90px">
     <div class="sec-hdr reveal">
       <span class="sec-num">02</span>
       <h2 class="sec-title" data-i18n="photoTitle">الصور</h2>
@@ -442,7 +456,7 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
   </div>
 
   <!-- 03 VIDEOS -->
-  <div style="margin-top:90px">
+  <div id="videos" style="margin-top:90px">
     <div class="sec-hdr reveal">
       <span class="sec-num">03</span>
       <h2 class="sec-title" data-i18n="vidTitle">أعمال <span>الفيديو</span></h2>
@@ -534,7 +548,7 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
 /* ── TRANSLATIONS ── */
 const I18N = {
   ar:{
-    navHome:"الرئيسية",navAbout:"عني",navWork:"الأعمال",navContact:"التواصل",
+    navHome:"الرئيسية",navAbout:"عني",navWork:"الأعمال",navDesigns:"التصاميم",navPhotos:"الصور",navVideos:"الفيديوهات",navBook:"كتيب الأعمال",navContact:"التواصل",
     eyebrow:"مصمم جرافيك محترف",
     heroName:"عبد الرحمن<br>الفارسي",
     heroRole:"أخصائي إبداعي ثلاثي اللغات | محرر فيديو ومصمم جرافيك",
@@ -567,7 +581,7 @@ const I18N = {
     footer:"© 2026 عبد الرحمن الفارسي — جميع الحقوق محفوظة."
   },
   en:{
-    navHome:"Home",navAbout:"About",navWork:"Work",navContact:"Contact",
+    navHome:"Home",navAbout:"About",navWork:"Work",navDesigns:"Designs",navPhotos:"Photos",navVideos:"Videos",navBook:"Portfolio Book",navContact:"Contact",
     eyebrow:"Professional Graphic Designer",
     heroName:"Abdul Rahman<br>AL-Farsi",
     heroRole:"Trilingual Creative Specialist | Video Editor & Graphic Designer",
@@ -600,7 +614,7 @@ const I18N = {
     footer:"© 2026 Abdul Rahman AL-Farsi — All rights reserved."
   },
   tr:{
-    navHome:"Ana Sayfa",navAbout:"Hakkımda",navWork:"Çalışmalar",navContact:"İletişim",
+    navHome:"Ana Sayfa",navAbout:"Hakkımda",navWork:"Çalışmalar",navDesigns:"Tasarımlar",navPhotos:"Fotoğraflar",navVideos:"Videolar",navBook:"Portföy Kitabı",navContact:"İletişim",
     eyebrow:"Profesyonel Grafik Tasarımcı",
     heroName:"Abdul Rahman<br>AL-Farsi",
     heroRole:"Üç Dilli Kreatif Uzman | Video Editörü & Grafik Tasarımcı",
@@ -655,6 +669,21 @@ applyLang(curLang);
 
 document.querySelectorAll('.lang-btn').forEach(btn=>{
   btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
+});
+
+/* ── DROPDOWN TOGGLE ── */
+document.querySelectorAll('.nav-drop>a').forEach(link=>{
+  link.addEventListener('click',e=>{
+    if(window.innerWidth<768){
+      e.preventDefault();
+      link.parentElement.classList.toggle('show');
+    }
+  });
+});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-drop')){
+    document.querySelectorAll('.nav-drop.show').forEach(d=>d.classList.remove('show'));
+  }
 });
 
 /* ── SCROLL REVEAL ── */
