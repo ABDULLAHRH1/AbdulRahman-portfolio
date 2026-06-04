@@ -136,10 +136,18 @@ html[dir=rtl] .eyebrow::after{content:'';width:22px;height:1.5px;background:var(
 .img-card{border-radius:var(--r);overflow:hidden;background:#e0dbd3;box-shadow:0 8px 30px rgba(14,14,14,.07);position:relative;cursor:pointer;aspect-ratio:3/4}
 .img-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .img-card:hover img{transform:scale(1.06)}
-.img-card .ovl{position:absolute;inset:0;background:rgba(14,14,14,.45);opacity:0;transition:opacity .4s;display:flex;align-items:center;justify-content:center}
+.img-card .ovl{position:absolute;inset:0;background:rgba(14,14,14,.45);opacity:0;transition:opacity .4s;display:flex;align-items:center;justify-content:center;pointer-events:none}
 .img-card:hover .ovl{opacity:1}
 .ovl-ico{width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;transform:scale(.8);transition:transform .4s}
-.img-card:hover .ovl-ico{transform:scale(1)}
+  .img-card:hover .ovl-ico{transform:scale(1)}
+
+.identity-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.identity-card{border-radius:var(--r);overflow:hidden;background:var(--card);box-shadow:var(--shadow);position:relative;cursor:pointer;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
+.identity-thumb{display:flex;flex-direction:column;align-items:center;gap:14px;color:var(--muted);font-size:.85rem;text-align:center;padding:20px}
+.identity-thumb svg{opacity:.4;width:56px;height:56px}
+.identity-ovl{position:absolute;inset:0;background:rgba(14,14,14,.45);opacity:0;transition:opacity .4s;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.identity-card:hover .identity-ovl{opacity:1}
+.identity-ovl>svg{width:46px;height:46px;border-radius:50%;background:#fff;padding:10px;box-sizing:border-box}
 .img-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:.73rem;text-align:center;padding:16px;background:linear-gradient(145deg,#edebe6,#d9d4cb)}
 .img-ph svg{opacity:.35}
 
@@ -275,6 +283,7 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
   .clink .ico svg{width:28px;height:28px}
   .lb-scroll{flex-direction:row;overflow-x:auto;overflow-y:hidden}
   .social-grid{grid-template-columns:repeat(3,1fr);gap:20px}
+  .identity-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
   .vid-grid{grid-template-columns:repeat(3,1fr);max-width:780px;margin:0 auto;gap:24px}
 }
 </style>
@@ -492,10 +501,38 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
     </div>
   </div>
 
-  <!-- 03 VIDEOS -->
-  <div id="videos" style="margin-top:90px">
+  <!-- 03 VISUAL IDENTITY -->
+  <div id="identity" style="margin-top:90px">
     <div class="sec-hdr reveal">
       <span class="sec-num">03</span>
+      <h2 class="sec-title" data-i18n="identityTitle">الهوية <span>البصرية</span></h2>
+    </div>
+    <div class="divider"></div>
+    <div class="identity-grid reveal">
+      <div class="identity-card" data-pdf="Bkalti Brand Identity.pdf">
+        <div class="identity-thumb">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <span data-i18n="bidName">Bkalti Brand Identity</span>
+        </div>
+        <div class="identity-ovl">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 VIDEOS -->
+  <div id="videos" style="margin-top:90px">
+    <div class="sec-hdr reveal">
+      <span class="sec-num">04</span>
       <h2 class="sec-title" data-i18n="vidTitle">أعمال <span>الفيديو</span></h2>
     </div>
     <div class="divider"></div>
@@ -527,10 +564,10 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
     </div>
   </div>
 
-  <!-- 04 VIEW MORE -->
+  <!-- 05 VIEW MORE -->
   <div id="book" style="margin-top:90px">
     <div class="sec-hdr reveal">
-      <span class="sec-num">04</span>
+      <span class="sec-num">05</span>
       <h2 class="sec-title" data-i18n="moreTitle">اطلع على <span>باقي الأعمال</span></h2>
     </div>
     <div class="divider"></div>
@@ -613,7 +650,8 @@ const I18N = {
     job3a:"إنتاج أصول جرافيك متنوعة بما في ذلك الشعارات وتصاميم وسائل التواصل والمواقع الإلكترونية.",
     job3b:"تحرير وإنتاج مقاطع فيديو عالية الجودة باستخدام Adobe Premiere Pro و After Effects.",
     job3c:"إدارة مشاريع متعددة في وقت واحد وتبسيط مسارات العمل لتلبية المواعيد النهائية الضيقة.",
-    designTitle:"التصاميم",photoTitle:"الصور",vidTitle:"أعمال <span>الفيديو</span>",
+    designTitle:"التصاميم",photoTitle:"الصور",identityTitle:"الهوية <span>البصرية</span>",bidName:"Bkalti Brand Identity",
+    vidTitle:"أعمال <span>الفيديو</span>",
     moreTitle:"اطلع على <span>باقي الأعمال</span>",moreText:"تصفح المزيد من أعمالي واحصل على الإلهام",moreBtn:"استعراض ملف الأعمال (PDF)",
 
     contactTitle:"للتواصل",contactText:"دعنا نصنع شيئاً رائعاً معاً.",
@@ -646,7 +684,8 @@ const I18N = {
     job3a:"Produced diverse graphic assets including logos, social media layouts, and website designs.",
     job3b:"Edited and produced high-quality videos for various clients using Adobe Premiere Pro and After Effects.",
     job3c:"Managed multiple projects simultaneously, streamlining workflows to meet tight deadlines.",
-    designTitle:"Designs",photoTitle:"Photos",vidTitle:"Video <span>Edits</span>",
+    designTitle:"Designs",photoTitle:"Photos",identityTitle:"Visual <span>Identity</span>",bidName:"Bkalti Brand Identity",
+    vidTitle:"Video <span>Edits</span>",
     moreTitle:"View <span>More</span>",moreText:"Browse more of my work and get inspired",moreBtn:"View Portfolio (PDF)",
 
     contactTitle:"Contact",contactText:"Let's build something great together.",
@@ -679,7 +718,8 @@ const I18N = {
     job3a:"Logo, sosyal medya düzeni ve web sitesi tasarımları dahil çeşitli grafik varlıklar ürettи.",
     job3b:"Adobe Premiere Pro ve After Effects kullanarak çeşitli müşteriler için yüksek kaliteli videolar hazırladı.",
     job3c:"Sıkı son tarihleri karşılamak için iş akışlarını kolaylaştırarak birden fazla projeyi eş zamanlı olarak yönetti.",
-    designTitle:"Tasarımlar",photoTitle:"Fotoğraflar",vidTitle:"Video <span>Düzenlemeleri</span>",
+    designTitle:"Tasarımlar",photoTitle:"Fotoğraflar",identityTitle:"Görsel <span>Kimlik</span>",bidName:"Bkalti Brand Identity",
+    vidTitle:"Video <span>Düzenlemeleri</span>",
     moreTitle:"Daha <span>Fazlası</span>",moreText:"Daha fazla çalışmama göz atın ve ilham alın",moreBtn:"Portföyü Görüntüle (PDF)",
 
     contactTitle:"İletişim",contactText:"Birlikte harika bir şey inşa edelim.",
@@ -790,6 +830,18 @@ document.querySelectorAll('.img-card').forEach(c=>{
       const slides=lbS.querySelectorAll('.lb-slide');
       if(slides[lbIdx])slides[lbIdx].scrollIntoView({behavior:'auto',block:'start',inline:'start'});
     });
+  });
+});
+
+/* ── IDENTITY CARD → PDF IN LIGHTBOX ── */
+document.querySelectorAll('.identity-card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    const pdf=c.dataset.pdf;
+    lbS.innerHTML=`<div class="lb-slide" style="padding:0"><iframe src="${pdf}" style="width:100%;height:100%;border:none;border-radius:0"></iframe></div>`;
+    lb.classList.add('on');
+    document.body.style.overflow='hidden';
+    lbPrev.classList.add('lb-hidden');
+    lbNext.classList.add('lb-hidden');
   });
 });
 </script>
