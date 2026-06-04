@@ -185,6 +185,8 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
 .lb-nav.lb-hidden{opacity:0!important;pointer-events:none!important}
 .lb-prev{inset-inline-start:14px}
 .lb-next{inset-inline-end:14px}
+.lb.pdf-mode .lb-slide{padding:0}
+.lb.pdf-mode .lb-slide embed{width:100%;height:100%;border:none;border-radius:0}
 
 /* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
@@ -793,7 +795,7 @@ document.addEventListener('keydown',e=>{
 lbPrev.onclick=()=>navigateLb(-1);
 lbNext.onclick=()=>navigateLb(1);
 
-function closeLb(){lb.classList.remove('on');lbS.innerHTML='';document.body.style.overflow=''}
+function closeLb(){lb.classList.remove('on','pdf-mode');lbS.innerHTML='';document.body.style.overflow=''}
 
 function navigateLb(dir){
   const slides=lbS.querySelectorAll('.lb-slide');
@@ -836,12 +838,13 @@ document.querySelectorAll('.img-card').forEach(c=>{
 /* ── IDENTITY CARD → PDF IN LIGHTBOX ── */
 document.querySelectorAll('.identity-card').forEach(c=>{
   c.addEventListener('click',()=>{
-    const pdf=c.dataset.pdf;
-    lbS.innerHTML=`<div class="lb-slide" style="padding:0"><iframe src="${pdf}" style="width:100%;height:100%;border:none;border-radius:0"></iframe></div>`;
+    const pdf=encodeURI(c.dataset.pdf);
+    lbS.innerHTML=`<div class="lb-slide" style="padding:0;display:block"><embed src="${pdf}#toolbar=1&navpanes=1" type="application/pdf" style="width:100%;height:100%;border:none"></div>`;
     lb.classList.add('on');
     document.body.style.overflow='hidden';
     lbPrev.classList.add('lb-hidden');
     lbNext.classList.add('lb-hidden');
+    lb.classList.add('pdf-mode');
   });
 });
 </script>
