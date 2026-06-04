@@ -220,8 +220,8 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
 
   .contact-sec{padding:100px 5%;border-radius:50px 50px 0 0;margin-top:80px}
   .tagline{font-size:clamp(1.05rem,2.2vw,1.3rem);margin-bottom:50px;margin-top:8px;max-width:460px}
-  .clinks{flex-direction:row;gap:18px}
-  .clink{flex:1;min-width:220px;gap:18px;padding:24px 26px;border-radius:18px;min-height:auto}
+  .clinks{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:16px}
+  .clink{flex:1 1 160px;max-width:240px;gap:16px;padding:20px 22px;border-radius:16px;min-height:auto}
   .clink:hover{transform:translateY(-5px)}
   .clink .ico svg{width:30px;height:30px}
   .clink-label{font-size:.75rem;margin-bottom:3px;letter-spacing:.08em}
@@ -242,6 +242,9 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
   .sec{padding:110px 5%}
   .about-grid{gap:60px;margin-bottom:80px}
   .contact-sec{padding:100px 5%}
+  .clinks{flex-wrap:nowrap;gap:20px}
+  .clink{flex:1;max-width:none;gap:20px;padding:26px 28px;border-radius:18px}
+  .clink .ico svg{width:32px;height:32px}
   .vid-grid{grid-template-columns:repeat(3,1fr);max-width:780px;margin:0 auto;gap:24px}
 }
 </style>
@@ -487,7 +490,6 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
 <!-- CONTACT -->
 <section id="contact" class="contact-sec">
   <div class="sec-hdr">
-    <span class="sec-num">04</span>
     <h2 class="sec-title reveal" data-i18n="contactTitle">للتواصل</h2>
   </div>
   <p class="tagline reveal" data-i18n="contactText">دعنا نصنع شيئاً رائعاً معاً.</p>
