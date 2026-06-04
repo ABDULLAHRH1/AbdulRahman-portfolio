@@ -37,8 +37,10 @@ a{text-decoration:none;color:inherit}
 .nav a{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);transition:color .3s;padding:4px 0;position:relative}
 .nav a::after{content:'';position:absolute;bottom:0;inset-inline-start:0;width:0;height:1.5px;background:var(--red);transition:width .3s}
 .nav a:hover{color:var(--ink)}.nav a:hover::after{width:100%}
-.lang-btn{background:transparent;border:1.5px solid var(--border);color:var(--ink);padding:4px 10px;border-radius:30px;cursor:pointer;font-family:inherit;font-size:.68rem;font-weight:700;letter-spacing:.06em;transition:all .3s;min-height:32px}
-.lang-btn:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lang-switcher{display:flex;gap:4px}
+.lang-btn{background:transparent;border:1.5px solid var(--border);color:var(--muted);padding:3px 8px;border-radius:20px;cursor:pointer;font-family:inherit;font-size:.62rem;font-weight:700;letter-spacing:.04em;transition:all .3s;min-height:28px;line-height:1}
+.lang-btn.active{background:var(--red);color:#fff;border-color:var(--red)}
+.lang-btn:not(.active):hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 
 /* ── HERO ── */
 .hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column-reverse;align-items:center;justify-content:center;padding:110px 5% 80px;gap:28px}
@@ -167,7 +169,8 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
   .nav a{font-size:.83rem;color:var(--muted);padding:0}
   .nav a::after{content:'';position:absolute;bottom:-3px;inset-inline-start:0;width:0;height:1.5px;background:var(--red);transition:width .3s}
   .nav a:hover{color:var(--ink)}.nav a:hover::after{width:100%}
-  .lang-btn{padding:6px 15px;font-size:.77rem;min-height:auto}
+  .lang-switcher{gap:6px}
+  .lang-btn{padding:5px 12px;font-size:.72rem;min-height:auto}
 
   .hero{flex-direction:row;justify-content:space-between;padding:120px 5% 90px;gap:60px}
   .hero-content{flex:1.2;min-width:300px;width:auto}
@@ -262,7 +265,11 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
       <a href="#contact" data-i18n="navContact">التواصل</a>
     </nav>
   </div>
-  <button class="lang-btn" id="langBtn">EN</button>
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="ar">AR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="tr">TR</button>
+  </div>
 </header>
 
 <!-- HERO -->
@@ -628,8 +635,8 @@ const I18N = {
 };
 
 const LANGS=['ar','en','tr'];
-let li=LANGS.indexOf(localStorage.getItem('pf_lang')||'ar');
-if(li<0)li=0;
+let curLang=localStorage.getItem('pf_lang')||'ar';
+if(!LANGS.includes(curLang))curLang='ar';
 
 function applyLang(lang){
   const html=document.documentElement;
@@ -639,16 +646,15 @@ function applyLang(lang){
     if(I18N[lang]?.[k]!==undefined) el.innerHTML=I18N[lang][k];
   });
   localStorage.setItem('pf_lang',lang);
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.classList.toggle('active',btn.dataset.lang===lang);
+  });
 }
 
-const lBtn=document.getElementById('langBtn');
-applyLang(LANGS[li]);
-lBtn.textContent=LANGS[(li+1)%3].toUpperCase();
+applyLang(curLang);
 
-lBtn.addEventListener('click',()=>{
-  li=(li+1)%3;
-  applyLang(LANGS[li]);
-  lBtn.textContent=LANGS[(li+1)%3].toUpperCase();
+document.querySelectorAll('.lang-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
 });
 
 /* ── SCROLL REVEAL ── */
