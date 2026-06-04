@@ -102,7 +102,7 @@ html[dir=rtl] .eyebrow::after{content:'';width:22px;height:1.5px;background:var(
 .vid-grid{display:grid;grid-template-columns:1fr;gap:16px}
 .vid-card{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:9/16;background:#1a1a1a;box-shadow:var(--shadow);cursor:pointer}
 .vid-card video{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.vid-card:hover video{transform:scale(1.03)}
+.vid-card:hover video{transform:scale(1.15)}
 .vid-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(14,14,14,.7) 0%,transparent 55%);z-index:1;pointer-events:none}
 .vid-label{position:absolute;bottom:14px;inset-inline-start:14px;color:#fff;font-size:.78rem;font-weight:700;z-index:2;letter-spacing:.03em}
 .mute-btn{position:absolute;bottom:10px;inset-inline-end:10px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;z-index:3;transition:background .3s,transform .2s}
@@ -135,6 +135,7 @@ html[dir=rtl] .eyebrow::after{content:'';width:22px;height:1.5px;background:var(
 .gd-steps li::before{content:counter(s);position:absolute;inset-inline-start:0;top:1px;width:18px;height:18px;background:var(--red);color:#fff;border-radius:50%;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center}
 .gd-link{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;border-radius:30px;padding:10px 18px;font-weight:700;font-size:.82rem;margin-top:6px;transition:opacity .3s}
 .gd-link:hover{opacity:.85}
+.more-cta:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(200,57,26,.35)}
 
 /* ── CONTACT ── */
 .contact-sec{background:var(--card);color:var(--card-text);padding:60px 5%;border-radius:24px 24px 0 0;margin-top:50px}
@@ -255,6 +256,7 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
   .sec{padding:110px 5%}
   .about-grid{gap:60px;margin-bottom:80px}
   .contact-sec{padding:100px 5%}
+  .vid-grid{grid-template-columns:repeat(3,1fr);max-width:780px;margin:0 auto;gap:24px}
 }
 </style>
 </head>
@@ -278,7 +280,7 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
 <section id="home" class="hero">
   <div class="hero-content">
     <div class="eyebrow reveal" data-i18n="eyebrow">مصمم جرافيك محترف</div>
-    <h1 class="reveal" data-i18n="heroName">عبد الرحمن<br>رحمة الله</h1>
+    <h1 class="reveal" data-i18n="heroName">عبد الرحمن<br>الفارسي</h1>
     <h2 class="reveal" data-i18n="heroRole">أخصائي إبداعي ثلاثي اللغات | محرر فيديو ومصمم جرافيك</h2>
     <p class="bio reveal" data-i18n="heroBio">مصمم جرافيك ومحرر فيديو يتمتع بقدر عالٍ من الإبداع والاهتمام بالتفاصيل، مع خبرة تزيد عن ٣ سنوات. خبير في برامج Adobe Creative Suite، ومتخصص في مونتاج الفيديو الاحترافي، والتصاميم التسويقية، وبناء هوية العلامة التجارية.</p>
     <div class="tags reveal">
@@ -291,7 +293,7 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
     <div class="img-outer">
       <div class="img-deco"></div>
       <div class="img-wrap">
-        <img src="A_hyper-realistic,_high-end_professional_portrait_202605310802.jpeg"
+        <img src="Picture.jpeg"
              alt="Abdul Rahman Portrait"
              onerror="this.outerHTML='<div class=ph-face><svg width=100 height=120 viewBox=\'0 0 100 120\' fill=\'none\'><ellipse cx=\'50\' cy=\'38\' rx=\'24\' ry=\'26\' fill=\'#b0a898\'/><ellipse cx=\'50\' cy=\'96\' rx=\'38\' ry=\'24\' fill=\'#b0a898\'/></svg></div>'">
       </div>
@@ -395,84 +397,36 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
 <!-- WORK -->
 <section id="work" class="sec" style="padding-top:0">
 
-  <!-- 01 VIDEOS -->
+  <!-- 01 DESIGNS -->
   <div class="sec-hdr reveal">
     <span class="sec-num">01</span>
-    <h2 class="sec-title" data-i18n="vidTitle">أعمال <span>الفيديو</span></h2>
+    <h2 class="sec-title" data-i18n="designTitle">التصاميم</h2>
   </div>
   <div class="divider"></div>
-
-  <!--
-    HOW TO ADD YOUR VIDEOS FROM GOOGLE DRIVE:
-    1. Open your Google Drive file
-    2. Right-click → "Get link" → set to "Anyone with the link"
-    3. Copy the file ID from the URL (the long string between /d/ and /view)
-    4. Replace YOUR_FILE_ID below with that ID
-    Example URL: https://drive.google.com/file/d/1ABC123xyz/view
-    → File ID = 1ABC123xyz
-    → Embed: https://drive.google.com/file/d/1ABC123xyz/preview
-  -->
-
-  <div class="vid-grid">
-    <div class="vid-card reveal" id="vc1">
-      <!-- To add video: replace src below with your Google Drive embed link -->
-      <!-- <iframe class="gd-frame" src="https://drive.google.com/file/d/YOUR_FILE_ID/preview" allow="autoplay"></iframe> -->
-      <div class="media-ph" id="vph1">
-        <svg width="44" height="44" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-        <p><strong>Boqsha Campaign</strong><br><span data-i18n="gdHint">لإضافة الفيديو — انظر التعليمات أدناه</span></p>
-      </div>
-      <span class="vid-label">Boqsha Campaign</span>
+  <div class="social-grid">
+    <div class="img-card vert reveal" id="ic1">
+      <div class="img-ph"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Mnzli Store — Post 1</span></div>
+      <div class="ovl"><div class="ovl-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
     </div>
-
-    <div class="vid-card reveal" id="vc2">
-      <div class="media-ph" id="vph2">
-        <svg width="44" height="44" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-        <p><strong>Sharqiya Profile</strong><br><span data-i18n="gdHint">لإضافة الفيديو — انظر التعليمات أدناه</span></p>
-      </div>
-      <span class="vid-label">Sharqiya Profile</span>
+    <div class="img-card vert reveal" id="ic2">
+      <div class="img-ph"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Mnzli Store — Post 2</span></div>
+      <div class="ovl"><div class="ovl-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
     </div>
-
-    <div class="vid-card reveal" id="vc3">
-      <div class="media-ph" id="vph3">
-        <svg width="44" height="44" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-        <p><strong>Social Reel</strong><br><span data-i18n="gdHint">لإضافة الفيديو — انظر التعليمات أدناه</span></p>
-      </div>
-      <span class="vid-label">Social Reel</span>
+    <div class="img-card vert reveal" id="ic3">
+      <div class="img-ph"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Boqsha Post</span></div>
+      <div class="ovl"><div class="ovl-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
+    </div>
+    <div class="img-card vert reveal" id="ic4">
+      <div class="img-ph"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Saudi Tech Post</span></div>
+      <div class="ovl"><div class="ovl-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
     </div>
   </div>
 
-  <!-- 02 SOCIAL -->
+  <!-- 02 PHOTOS -->
   <div style="margin-top:90px">
     <div class="sec-hdr reveal">
       <span class="sec-num">02</span>
-      <h2 class="sec-title" data-i18n="socialTitle">تصاميم <span>السوشيال</span></h2>
-    </div>
-    <div class="divider"></div>
-    <div class="social-grid">
-      <div class="img-card vert reveal" id="ic1">
-        <div class="img-ph"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Mnzli Store — Post 1</span></div>
-        <div class="ovl"><div class="ovl-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-      </div>
-      <div class="img-card vert reveal" id="ic2">
-        <div class="img-ph"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Mnzli Store — Post 2</span></div>
-        <div class="ovl"><div class="ovl-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-      </div>
-      <div class="img-card vert reveal" id="ic3">
-        <div class="img-ph"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Boqsha Post</span></div>
-        <div class="ovl"><div class="ovl-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-      </div>
-      <div class="img-card vert reveal" id="ic4">
-        <div class="img-ph"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Saudi Tech Post</span></div>
-        <div class="ovl"><div class="ovl-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 03 BRANDING -->
-  <div style="margin-top:90px">
-    <div class="sec-hdr reveal">
-      <span class="sec-num">03</span>
-      <h2 class="sec-title" data-i18n="brandTitle">الهويات <span>والمطبوعات</span></h2>
+      <h2 class="sec-title" data-i18n="photoTitle">الصور</h2>
     </div>
     <div class="divider"></div>
     <div class="brand-grid">
@@ -488,6 +442,66 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
         <div class="img-ph"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Saudi Tech Logo</span></div>
         <div class="ovl"><div class="ovl-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
       </div>
+    </div>
+  </div>
+
+  <!-- 03 VIDEOS -->
+  <div style="margin-top:90px">
+    <div class="sec-hdr reveal">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title" data-i18n="vidTitle">أعمال <span>الفيديو</span></h2>
+    </div>
+    <div class="divider"></div>
+    <!--
+      HOW TO ADD YOUR VIDEOS FROM GOOGLE DRIVE:
+      1. Open your Google Drive file
+      2. Right-click → "Get link" → set to "Anyone with the link"
+      3. Copy the file ID from the URL (the long string between /d/ and /view)
+      4. Replace YOUR_FILE_ID below with that ID
+      Example URL: https://drive.google.com/file/d/1ABC123xyz/view
+      → File ID = 1ABC123xyz
+      → Embed: https://drive.google.com/file/d/1ABC123xyz/preview
+    -->
+    <div class="vid-grid">
+      <div class="vid-card reveal" id="vc1">
+        <!-- To add video: replace src below with your Google Drive embed link -->
+        <!-- <iframe class="gd-frame" src="https://drive.google.com/file/d/YOUR_FILE_ID/preview" allow="autoplay"></iframe> -->
+        <div class="media-ph" id="vph1">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+          <p><strong>Boqsha Campaign</strong><br><span data-i18n="gdHint">لإضافة الفيديو — انظر التعليمات أدناه</span></p>
+        </div>
+        <span class="vid-label">Boqsha Campaign</span>
+      </div>
+      <div class="vid-card reveal" id="vc2">
+        <div class="media-ph" id="vph2">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+          <p><strong>Sharqiya Profile</strong><br><span data-i18n="gdHint">لإضافة الفيديو — انظر التعليمات أدناه</span></p>
+        </div>
+        <span class="vid-label">Sharqiya Profile</span>
+      </div>
+      <div class="vid-card reveal" id="vc3">
+        <div class="media-ph" id="vph3">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+          <p><strong>Social Reel</strong><br><span data-i18n="gdHint">لإضافة الفيديو — انظر التعليمات أدناه</span></p>
+        </div>
+        <span class="vid-label">Social Reel</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 VIEW MORE -->
+  <div style="margin-top:90px">
+    <div class="sec-hdr reveal">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title" data-i18n="moreTitle">اطلع على <span>باقي الأعمال</span></h2>
+    </div>
+    <div class="divider"></div>
+    <div class="more-wrap reveal" style="text-align:center;padding:40px 20px;background:var(--card);border-radius:var(--r);color:var(--card-text)">
+      <p data-i18n="moreText" style="font-size:clamp(1rem,2.2vw,1.15rem);color:rgba(240,237,232,.55);margin-bottom:28px;max-width:400px;margin-inline:auto;line-height:1.8">تصفح المزيد من أعمالي واحصل على الإلهام</p>
+      <a href="https://behance.net/abdulral-fars" target="_blank" rel="noopener" class="more-cta" style="display:inline-flex;align-items:center;gap:12px;background:var(--red);color:#fff;border-radius:50px;padding:14px 32px;font-weight:700;font-size:.92rem;transition:all .4s var(--ease);text-decoration:none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.688-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.209 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/></svg>
+        <span data-i18n="moreBtn">عرض الملف الشخصي على Behance</span>
+      </a>
     </div>
   </div>
 
@@ -560,7 +574,7 @@ const I18N = {
   ar:{
     navHome:"الرئيسية",navAbout:"عني",navWork:"الأعمال",navContact:"التواصل",
     eyebrow:"مصمم جرافيك محترف",
-    heroName:"عبد الرحمن<br>رحمة الله",
+    heroName:"عبد الرحمن<br>الفارسي",
     heroRole:"أخصائي إبداعي ثلاثي اللغات | محرر فيديو ومصمم جرافيك",
     heroBio:"مصمم جرافيك ومحرر فيديو يتمتع بقدر عالٍ من الإبداع والاهتمام بالتفاصيل، مع خبرة تزيد عن ٣ سنوات. خبير في برامج Adobe Creative Suite، ومتخصص في مونتاج الفيديو الاحترافي، والتصاميم التسويقية، وبناء هوية العلامة التجارية.",
     tagLoc:"جدة، المملكة العربية السعودية",tagSpec:"موشن جرافيك & هويات",tagStatus:"متاح للعمل",
@@ -584,7 +598,8 @@ const I18N = {
     job3a:"إنتاج أصول جرافيك متنوعة بما في ذلك الشعارات وتصاميم وسائل التواصل والمواقع الإلكترونية.",
     job3b:"تحرير وإنتاج مقاطع فيديو عالية الجودة باستخدام Adobe Premiere Pro و After Effects.",
     job3c:"إدارة مشاريع متعددة في وقت واحد وتبسيط مسارات العمل لتلبية المواعيد النهائية الضيقة.",
-    vidTitle:"أعمال الفيديو",socialTitle:"تصاميم السوشيال",brandTitle:"الهويات والمطبوعات",
+    designTitle:"التصاميم",photoTitle:"الصور",vidTitle:"أعمال <span>الفيديو</span>",
+    moreTitle:"اطلع على <span>باقي الأعمال</span>",moreText:"تصفح المزيد من أعمالي واحصل على الإلهام",moreBtn:"عرض الملف الشخصي على Behance",
     gdHint:"لإضافة الفيديو — انظر التعليمات أدناه",
     gdTitle:"كيف تضيف صورك وفيديوهاتك من Google Drive",
     gdDesc:"لعرض أعمالك الحقيقية على الموقع، اتبع هذه الخطوات البسيطة لكل ملف:",
@@ -600,7 +615,7 @@ const I18N = {
   en:{
     navHome:"Home",navAbout:"About",navWork:"Work",navContact:"Contact",
     eyebrow:"Professional Graphic Designer",
-    heroName:"Abdul Rahman<br>Rahmatulla",
+    heroName:"Abdul Rahman<br>AL-Farsi",
     heroRole:"Trilingual Creative Specialist | Video Editor & Graphic Designer",
     heroBio:"A highly creative and detail-oriented Graphic Designer and Video Editor with over 3 years of experience. Expert in Adobe Creative Suite, specializing in high-end video montages, promotional marketing videos, and brand identity.",
     tagLoc:"Jeddah, Saudi Arabia",tagSpec:"Motion & Branding",tagStatus:"Available for work",
@@ -624,7 +639,8 @@ const I18N = {
     job3a:"Produced diverse graphic assets including logos, social media layouts, and website designs.",
     job3b:"Edited and produced high-quality videos for various clients using Adobe Premiere Pro and After Effects.",
     job3c:"Managed multiple projects simultaneously, streamlining workflows to meet tight deadlines.",
-    vidTitle:"Video Edits",socialTitle:"Social Media",brandTitle:"Branding & Print",
+    designTitle:"Designs",photoTitle:"Photos",vidTitle:"Video <span>Edits</span>",
+    moreTitle:"View <span>More</span>",moreText:"Browse more of my work and get inspired",moreBtn:"View Behance Profile",
     gdHint:"To add video — see instructions below",
     gdTitle:"How to add your images & videos from Google Drive",
     gdDesc:"To display your real work on the site, follow these simple steps for each file:",
@@ -640,7 +656,7 @@ const I18N = {
   tr:{
     navHome:"Ana Sayfa",navAbout:"Hakkımda",navWork:"Çalışmalar",navContact:"İletişim",
     eyebrow:"Profesyonel Grafik Tasarımcı",
-    heroName:"Abdul Rahman<br>Rahmatulla",
+    heroName:"Abdul Rahman<br>AL-Farsi",
     heroRole:"Üç Dilli Kreatif Uzman | Video Editörü & Grafik Tasarımcı",
     heroBio:"3 yılı aşkın deneyime sahip, yüksek yaratıcılık ve detay odaklı Grafik Tasarımcı ve Video Editörü. Adobe Creative Suite uzmanı, profesyonel video montajı, tanıtım videoları ve marka kimliğinde uzmanlaşmış.",
     tagLoc:"Cidde, Suudi Arabistan",tagSpec:"Motion & Markalaşma",tagStatus:"Çalışmaya Müsait",
@@ -664,7 +680,8 @@ const I18N = {
     job3a:"Logo, sosyal medya düzeni ve web sitesi tasarımları dahil çeşitli grafik varlıklar ürettи.",
     job3b:"Adobe Premiere Pro ve After Effects kullanarak çeşitli müşteriler için yüksek kaliteli videolar hazırladı.",
     job3c:"Sıkı son tarihleri karşılamak için iş akışlarını kolaylaştırarak birden fazla projeyi eş zamanlı olarak yönetti.",
-    vidTitle:"Video Düzenlemeleri",socialTitle:"Sosyal Medya",brandTitle:"Markalaşma & Baskı",
+    designTitle:"Tasarımlar",photoTitle:"Fotoğraflar",vidTitle:"Video <span>Düzenlemeleri</span>",
+    moreTitle:"Daha <span>Fazlası</span>",moreText:"Daha fazla çalışmama göz atın ve ilham alın",moreBtn:"Behance Profilini Görüntüle",
     gdHint:"Video eklemek için — aşağıdaki talimatları inceleyin",
     gdTitle:"Google Drive'dan resim ve videolarınızı nasıl eklersiniz",
     gdDesc:"Gerçek çalışmalarınızı sitede görüntülemek için her dosya için şu basit adımları izleyin:",
