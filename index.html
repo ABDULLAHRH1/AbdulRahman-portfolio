@@ -773,6 +773,12 @@ document.querySelectorAll('.nav-drop>a').forEach(link=>{
     }
   });
 });
+/* close dropdown after tapping a sub-link on mobile */
+document.querySelectorAll('.dropdown a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    if(window.innerWidth<768)a.closest('.nav-drop').classList.remove('show');
+  });
+});
 document.addEventListener('click',e=>{
   if(!e.target.closest('.nav-drop')){
     document.querySelectorAll('.nav-drop.show').forEach(d=>d.classList.remove('show'));
