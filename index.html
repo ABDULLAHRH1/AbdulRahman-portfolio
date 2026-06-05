@@ -142,7 +142,7 @@ html[dir=rtl] .eyebrow::after{content:'';width:22px;height:1.5px;background:var(
   .img-card:hover .ovl-ico{transform:scale(1)}
 
 .identity-grid{display:grid;grid-template-columns:1fr;gap:16px}
-.identity-card{border-radius:var(--r);overflow:hidden;background:var(--card);box-shadow:var(--shadow);position:relative;cursor:pointer;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
+.identity-card{border-radius:var(--r);overflow:hidden;background:var(--card);box-shadow:var(--shadow);position:relative;cursor:pointer;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;text-decoration:none;color:inherit}
 .identity-thumb{display:flex;flex-direction:column;align-items:center;gap:14px;color:var(--muted);font-size:.85rem;text-align:center;padding:20px}
 .identity-thumb svg{opacity:.4;width:56px;height:56px}
 .identity-ovl{position:absolute;inset:0;background:rgba(14,14,14,.45);opacity:0;transition:opacity .4s;display:flex;align-items:center;justify-content:center;pointer-events:none}
@@ -509,7 +509,7 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
     </div>
     <div class="divider"></div>
     <div class="identity-grid reveal">
-      <div class="identity-card" data-pdf="Bkalti Brand Identity.pdf">
+      <a href="Bkalti%20Brand%20Identity.pdf" target="_blank" rel="noopener" class="identity-card">
         <div class="identity-thumb">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -525,7 +525,7 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
             <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -833,12 +833,7 @@ document.querySelectorAll('.img-card').forEach(c=>{
   });
 });
 
-/* ── IDENTITY CARD → PDF ── */
-document.querySelectorAll('.identity-card').forEach(c=>{
-  c.addEventListener('click',()=>{
-    window.open(encodeURI(c.dataset.pdf), '_blank');
-  });
-});
+
 </script>
 </body>
 </html>
