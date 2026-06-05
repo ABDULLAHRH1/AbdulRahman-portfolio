@@ -153,6 +153,8 @@ html[dir=rtl] .eyebrow::after{content:'';width:22px;height:1.5px;background:var(
 /* ── GOOGLE DRIVE HELPER PANEL ── */
 
 .more-cta:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(200,57,26,.35)}
+.more-wrap{position:relative;padding:0;background:var(--card);border-radius:var(--r);color:var(--card-text);overflow:hidden;min-height:300px;display:flex;align-items:center;justify-content:center}
+.more-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(2px) brightness(.45)}
 
 /* ── CONTACT ── */
 .contact-sec{background:var(--card);color:var(--card-text);padding:60px 5%;border-radius:24px 24px 0 0;margin-top:50px}
@@ -587,8 +589,8 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
       <h2 class="sec-title" data-i18n="moreTitle">اطلع على <span>باقي الأعمال</span></h2>
     </div>
     <div class="divider"></div>
-    <div class="more-wrap reveal" style="position:relative;padding:0;background:var(--card);border-radius:var(--r);color:var(--card-text);overflow:hidden;min-height:300px;display:flex;align-items:center;justify-content:center">
-<img src="Banner.png" alt="View More Projects" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(2px) brightness(.45)">
+    <div class="more-wrap reveal">
+<img src="Banner.png" alt="View More Projects">
 <div style="position:relative;z-index:2;text-align:center;padding:40px 20px;max-width:500px">
 <p data-i18n="moreText" style="font-size:clamp(1rem,2.2vw,1.15rem);color:rgba(240,237,232,.8);margin-bottom:28px;line-height:1.8">تصفح المزيد من أعمالي واحصل على الإلهام</p>
 <a href="Portfolio - Abdul Rahman AL-Farsi.pdf" class="more-cta" style="display:inline-flex;align-items:center;gap:12px;background:var(--red);color:#fff;border-radius:50px;padding:14px 32px;font-weight:700;font-size:.92rem;transition:all .4s var(--ease);text-decoration:none">
