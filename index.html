@@ -784,6 +784,11 @@ document.addEventListener('click',e=>{
     document.querySelectorAll('.nav-drop.show').forEach(d=>d.classList.remove('show'));
   }
 });
+document.addEventListener('touchstart',e=>{
+  if(!e.target.closest('.nav-drop')){
+    document.querySelectorAll('.nav-drop.show').forEach(d=>d.classList.remove('show'));
+  }
+});
 
 /* ── SCROLL REVEAL ── */
 const ro=new IntersectionObserver(es=>{
