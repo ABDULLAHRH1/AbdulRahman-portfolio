@@ -867,13 +867,14 @@ document.querySelectorAll('.vid-card').forEach(c=>{
     const cards=Array.from(document.querySelectorAll('.vid-card'));
     const idx=cards.indexOf(c);
     let html='';
-    cards.forEach(card=>{
+    cards.forEach((card,i)=>{
       const vid=card.querySelector('video');
       if(vid){
         const src=vid.src||vid.querySelector('source')?.src||'';
         const poster=vid.getAttribute('poster')||'';
         const posterAttr=poster?` poster="${poster}"`:'';
-        html+=`<div class="lb-slide" style="padding:0;background:#000"><video src="${src}"${posterAttr} controls autoplay playsinline style="width:100%;height:100%;object-fit:contain"></video></div>`;
+        const autoplay=i===idx?'autoplay':'';
+        html+=`<div class="lb-slide" style="padding:0;background:#000"><video src="${src}"${posterAttr} ${autoplay} controls playsinline style="width:100%;height:100%;object-fit:contain"></video></div>`;
       }
     });
     lbS.innerHTML=html;
