@@ -120,17 +120,15 @@ html[dir=rtl] .eyebrow::after{content:'';width:22px;height:1.5px;background:var(
 .lang-chip span{color:var(--muted);font-size:.7rem}
 
 /* ── VIDEO GRID ── */
-.vid-grid{display:grid;grid-template-columns:1fr;gap:16px}
-.vid-card{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:9/16;background:#1a1a1a;box-shadow:var(--shadow);cursor:pointer}
+.vid-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.vid-card{position:relative;border-radius:var(--r);overflow:hidden;background:#1a1a1a;box-shadow:0 8px 30px rgba(14,14,14,.07);cursor:pointer;aspect-ratio:3/4}
 .vid-card video{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.vid-card:hover video{transform:scale(1.15)}
-.vid-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(14,14,14,.7) 0%,transparent 55%);z-index:1;pointer-events:none}
-.vid-label{position:absolute;bottom:14px;inset-inline-start:14px;color:#fff;font-size:.78rem;font-weight:700;z-index:2;letter-spacing:.03em}
-.mute-btn{position:absolute;bottom:10px;inset-inline-end:10px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;z-index:3;transition:background .3s,transform .2s}
-.mute-btn:hover{background:var(--red);transform:scale(1.1)}
-.media-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:rgba(255,255,255,.4);font-size:.75rem;text-align:center;padding:16px;background:linear-gradient(145deg,#1c1c1c,#111)}
-.media-ph svg{opacity:.3}
-.media-ph p{line-height:1.5;opacity:.7}
+.vid-card:hover video{transform:scale(1.06)}
+.vid-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(14,14,14,.7) 0%,transparent 50%);z-index:1;pointer-events:none}
+.vid-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;opacity:0;transition:opacity .4s;pointer-events:none}
+.vid-play svg{width:44px;height:44px;opacity:.85;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
+.vid-card:hover .vid-play{opacity:1}
+.vid-label{position:absolute;bottom:14px;inset-inline-start:14px;color:#fff;font-size:.78rem;font-weight:700;z-index:2}
 
 /* ── IMAGE GRIDS ── */
 .social-grid,.brand-grid{display:grid;grid-template-columns:1fr;gap:14px}
@@ -243,10 +241,9 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
   .lang-chip strong{font-size:.93rem}
   .lang-chip span{font-size:.75rem}
 
-  .vid-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+  .vid-grid{grid-template-columns:repeat(2,1fr);gap:16px}
   .vid-label{font-size:.82rem;bottom:18px;inset-inline-start:18px}
-  .mute-btn{width:40px;height:40px;bottom:14px;inset-inline-end:14px}
-  .media-ph{font-size:.8rem;padding:20px}
+  .vid-play svg{width:48px;height:48px}
 
   .social-grid,.brand-grid{grid-template-columns:repeat(2,1fr);gap:16px}
   .ovl-ico{width:46px;height:46px}
@@ -287,7 +284,7 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
   .lb-scroll{flex-direction:row;overflow-x:auto;overflow-y:hidden}
   .social-grid,.brand-grid{grid-template-columns:repeat(3,1fr);gap:20px}
   .identity-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-  .vid-grid{grid-template-columns:repeat(3,1fr);max-width:780px;margin:0 auto;gap:24px}
+  .vid-grid{grid-template-columns:repeat(3,1fr);gap:20px}
 }
 </style>
 </head>
@@ -537,27 +534,46 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
 
     <div class="vid-grid">
       <div class="vid-card reveal" id="vc1">
-        <!-- To add video: replace src below with your Google Drive embed link -->
-
-        <div class="media-ph" id="vph1">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-          <p><strong>Boqsha Campaign</strong></p>
+        <video src="Vides/01.mp4" preload="metadata" muted playsinline></video>
+        <div class="vid-play">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
         </div>
-        <span class="vid-label">Boqsha Campaign</span>
+        <span class="vid-label">Video 01</span>
       </div>
       <div class="vid-card reveal" id="vc2">
-        <div class="media-ph" id="vph2">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-          <p><strong>Sharqiya Profile</strong></p>
+        <video src="Vides/02.mp4" preload="metadata" muted playsinline></video>
+        <div class="vid-play">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
         </div>
-        <span class="vid-label">Sharqiya Profile</span>
+        <span class="vid-label">Video 02</span>
       </div>
       <div class="vid-card reveal" id="vc3">
-        <div class="media-ph" id="vph3">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-          <p><strong>Social Reel</strong></p>
+        <video src="Vides/03.mp4" preload="metadata" muted playsinline></video>
+        <div class="vid-play">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
         </div>
-        <span class="vid-label">Social Reel</span>
+        <span class="vid-label">Video 03</span>
+      </div>
+      <div class="vid-card reveal" id="vc4">
+        <video src="Vides/04.mp4" preload="metadata" muted playsinline></video>
+        <div class="vid-play">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="vid-label">Video 04</span>
+      </div>
+      <div class="vid-card reveal" id="vc5">
+        <video src="Vides/05.mp4" preload="metadata" muted playsinline></video>
+        <div class="vid-play">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="vid-label">Video 05</span>
+      </div>
+      <div class="vid-card reveal" id="vc6">
+        <video src="Vides/06.mp4" preload="metadata" muted playsinline></video>
+        <div class="vid-play">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="vid-label">Video 06</span>
       </div>
     </div>
   </div>
@@ -831,6 +847,18 @@ document.querySelectorAll('.img-card').forEach(c=>{
   });
 });
 
+/* ── VIDEO CARDS → LIGHTBOX ── */
+document.querySelectorAll('.vid-card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    const vid=c.querySelector('video');
+    if(!vid)return;
+    lbS.innerHTML=`<div class="lb-slide" style="padding:0;background:#000"><video src="${vid.src}" controls autoplay playsinline style="width:100%;height:100%;object-fit:contain"></video></div>`;
+    lb.classList.add('on');
+    document.body.style.overflow='hidden';
+    lbPrev.classList.add('lb-hidden');
+    lbNext.classList.add('lb-hidden');
+  });
+});
 
 </script>
 </body>
