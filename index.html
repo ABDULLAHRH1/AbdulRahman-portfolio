@@ -541,35 +541,35 @@ footer{background:var(--card);color:rgba(240,237,232,.25);text-align:center;padd
         <span class="vid-label">Video 01</span>
       </div>
       <div class="vid-card reveal" id="vc2">
-        <video src="Vides/02.mp4" preload="metadata" muted playsinline></video>
+        <video src="Vides/02.mp4" poster="Vides/02.png" preload="metadata" muted playsinline></video>
         <div class="vid-play">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
         </div>
         <span class="vid-label">Video 02</span>
       </div>
       <div class="vid-card reveal" id="vc3">
-        <video src="Vides/03.mp4" preload="metadata" muted playsinline></video>
+        <video src="Vides/03.mp4" poster="Vides/03.png" preload="metadata" muted playsinline></video>
         <div class="vid-play">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
         </div>
         <span class="vid-label">Video 03</span>
       </div>
       <div class="vid-card reveal" id="vc4">
-        <video src="Vides/04.mp4" preload="metadata" muted playsinline></video>
+        <video src="Vides/04.mp4" poster="Vides/04.png" preload="metadata" muted playsinline></video>
         <div class="vid-play">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
         </div>
         <span class="vid-label">Video 04</span>
       </div>
       <div class="vid-card reveal" id="vc5">
-        <video src="Vides/05.mp4" preload="metadata" muted playsinline></video>
+        <video src="Vides/05.mp4" poster="Vides/05.png" preload="metadata" muted playsinline></video>
         <div class="vid-play">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
         </div>
         <span class="vid-label">Video 05</span>
       </div>
       <div class="vid-card reveal" id="vc6">
-        <video src="Vides/06.mp4" preload="metadata" muted playsinline></video>
+        <video src="Vides/06.mp4" poster="Vides/06.png" preload="metadata" muted playsinline></video>
         <div class="vid-play">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
         </div>
@@ -807,13 +807,16 @@ document.addEventListener('keydown',e=>{
 lbPrev.onclick=()=>navigateLb(-1);
 lbNext.onclick=()=>navigateLb(1);
 
-function closeLb(){lb.classList.remove('on');lbS.innerHTML='';document.body.style.overflow=''}
+function closeLb(){lb.classList.remove('on');lbS.querySelectorAll('video').forEach(v=>v.pause());lbS.innerHTML='';document.body.style.overflow=''}
 
 function navigateLb(dir){
   const slides=lbS.querySelectorAll('.lb-slide');
   if(!slides.length)return;
+  slides.forEach(s=>{const v=s.querySelector('video');if(v)v.pause()});
   lbIdx=Math.max(0,Math.min(slides.length-1,lbIdx+dir));
   slides[lbIdx].scrollIntoView({behavior:'smooth',block:'start',inline:'start'});
+  const v=slides[lbIdx].querySelector('video');
+  if(v)v.play().catch(()=>{});
   lbPrev.classList.toggle('lb-hidden',lbIdx===0);
   lbNext.classList.toggle('lb-hidden',lbIdx===slides.length-1);
 }
@@ -847,16 +850,33 @@ document.querySelectorAll('.img-card').forEach(c=>{
   });
 });
 
-/* ── VIDEO CARDS → LIGHTBOX ── */
+/* ── VIDEO CARDS → GALLERY LIGHTBOX ── */
 document.querySelectorAll('.vid-card').forEach(c=>{
   c.addEventListener('click',()=>{
-    const vid=c.querySelector('video');
-    if(!vid)return;
-    lbS.innerHTML=`<div class="lb-slide" style="padding:0;background:#000"><video src="${vid.src}" controls autoplay playsinline style="width:100%;height:100%;object-fit:contain"></video></div>`;
+    const cards=Array.from(document.querySelectorAll('.vid-card'));
+    const idx=cards.indexOf(c);
+    let html='';
+    cards.forEach(card=>{
+      const vid=card.querySelector('video');
+      if(vid){
+        const src=vid.src||vid.querySelector('source')?.src||'';
+        const poster=vid.getAttribute('poster')||'';
+        const posterAttr=poster?` poster="${poster}"`:'';
+        html+=`<div class="lb-slide" style="padding:0;background:#000"><video src="${src}"${posterAttr} controls autoplay playsinline style="width:100%;height:100%;object-fit:contain"></video></div>`;
+      }
+    });
+    lbS.innerHTML=html;
     lb.classList.add('on');
     document.body.style.overflow='hidden';
-    lbPrev.classList.add('lb-hidden');
-    lbNext.classList.add('lb-hidden');
+    lbPrev.classList.remove('lb-hidden');
+    lbNext.classList.remove('lb-hidden');
+    lbIdx=idx;
+    lbPrev.classList.toggle('lb-hidden',idx===0);
+    lbNext.classList.toggle('lb-hidden',idx===cards.length-1);
+    requestAnimationFrame(()=>{
+      const slides=lbS.querySelectorAll('.lb-slide');
+      if(slides[idx])slides[idx].scrollIntoView({behavior:'auto',block:'start',inline:'start'});
+    });
   });
 });
 
